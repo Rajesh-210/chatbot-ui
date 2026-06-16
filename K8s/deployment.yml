@@ -15,7 +15,7 @@ spec:
         app: chatbot-clone
     spec:
       containers:
-      - name: reddit-clone
+      - name: chabot-clone
         image: chilukurir/chatbot:latest
         ports:
         - containerPort: 3000
