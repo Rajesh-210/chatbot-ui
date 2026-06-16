@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: chabot-clone
-        image: chilukurir/chatbot:latest
+        image: chilukurir/chatbot:7
         ports:
         - containerPort: 3000
