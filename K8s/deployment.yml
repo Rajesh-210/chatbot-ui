@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-clone-deployment
+  labels:
+    app: chatbot-clone
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: chatbot-clone
+  template:
+    metadata:
+      labels:
+        app: chatbot-clone
+    spec:
+      containers:
+      - name: reddit-clone
+        image: chilukurir/chatbot:latest
+        ports:
+        - containerPort: 3000
