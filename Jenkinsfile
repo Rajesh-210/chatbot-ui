@@ -51,7 +51,7 @@ pipeline{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"  
-                        sh "docker build -t chatbot ."
+                        sh "docker build --no-cache -t chatbot ."
                         sh "docker tag chatbot ${DOCKER_USERNAME}/chatbot:${BUILD_NUMBER}"
                         sh "docker tag chatbot ${DOCKER_USERNAME}/chatbot:latest"
                         sh "docker push ${DOCKER_USERNAME}/chatbot:${BUILD_NUMBER}"
