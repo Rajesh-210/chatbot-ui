@@ -29,7 +29,7 @@ pipeline{
         stage("quality gate"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
                 }
             } 
         }
@@ -52,8 +52,8 @@ pipeline{
                     withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"  
                         sh "docker build -t chatbot ."
-                        sh "docker tag chatbot ${DOCKER_USERNAME}/reddit:${BUILD_NUMBER}"
-                        sh "docker tag chatbot ${DOCKER_USERNAME}/reddit:latest"
+                        sh "docker tag chatbot ${DOCKER_USERNAME}/chatbot:${BUILD_NUMBER}"
+                        sh "docker tag chatbot ${DOCKER_USERNAME}/chatbot:latest"
                         sh "docker push ${DOCKER_USERNAME}/chatbot:${BUILD_NUMBER}"
                         sh "docker push ${DOCKER_USERNAME}/chatbot:latest"
                     }
