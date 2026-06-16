@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('Checkout from Git'){
             steps{
-                git branch: 'master', url: 'https://github.com/Rajesh-210/chatbot-ui.git'
+                git branch: 'main', url: 'https://github.com/Rajesh-210/chatbot-ui.git'
             }
         }
         stage('Install Dependencies') {
